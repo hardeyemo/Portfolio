@@ -91,6 +91,29 @@ export const featured = {
 
 export const otherProjects = [
   {
+    name: "Drishop",
+    description:
+      "A full-stack online marketplace for Nigeria, built around a searchable product catalogue and a complete order flow. Customers can browse product variants, manage a cart and wishlist, check out with Paystack, and follow order updates.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Paystack"],
+    image: "/projects/drishop/storefront.png",
+    gallery: [
+      { src: "/projects/drishop/laptop.webp", alt: "Laptop product from the Drishop catalogue" },
+      { src: "/projects/drishop/kettle.webp", alt: "Electric kettle product from the Drishop catalogue" },
+      { src: "/projects/drishop/serum.webp", alt: "Vitamin C serum product from the Drishop catalogue" },
+      { src: "/projects/drishop/rice.webp", alt: "Rice product from the Drishop catalogue" },
+    ],
+    highlights: [
+      "Catalogue search, category and price filters, sorting, pagination, and product variants.",
+      "Supabase Auth, customer profiles, wishlists, and protected account and admin routes.",
+      "Server-priced checkout with stock reservation, discounts, shipping rules, and Paystack payment verification.",
+      "Order status updates and customer email notifications; admin order fulfillment and catalogue visibility controls.",
+    ],
+    statusNote:
+      "The cart currently persists in browser storage. Admin product editing and analytics are future work.",
+    url: "https://drishop.vercel.app",
+    repo: "https://github.com/hardeyemo/Drishop",
+  },
+  {
     name: "Shorturl",
     description:
       "A URL shortener interface for turning long links into short links, with an option to create QR codes.",

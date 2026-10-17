@@ -10,11 +10,10 @@ export const profile = {
   linkedin: "https://linkedin.com/in/hardeyemo",
   resume: "/Adebiyi_Idris_Resume.pdf",
   tagline:
-    "I build production web apps end to end, from animated interfaces to the database behind them.",
+    "I build full-stack web applications, from responsive interfaces to reliable backends.",
   about: [
-    "I'm a full-stack developer who builds dependable, production-grade web applications: responsive, animated interfaces on the front, well-structured services and databases behind them.",
-    "I'm comfortable owning a feature from architecture through deployment, with a focus on clean code, data integrity, and systems that hold up under real usage rather than just in the demo.",
-    "I studied Agricultural Engineering at the University of Ilorin, and I'm drawn to teams that value long-term reliability and craftsmanship over quick, disposable builds.",
+    "I build and ship web products end to end, with a focus on clear interfaces, reliable systems, and maintainable code.",
+    "Based in Ilorin, Nigeria. I hold a Bachelor of Engineering (B.Eng), Second Class Upper Division.",
   ],
 };
 
@@ -35,13 +34,10 @@ export const featured = {
   // Add your repository URL here to show the GitHub button. Leave empty to hide it.
   repo: "https://github.com/hardeyemo/ra-homes",
   summary:
-    "A full-stack property listing platform I built and shipped for a real estate brokerage. It's live in production.",
+    "A live property platform built for a real estate brokerage.",
   highlights: [
-    "Public listings search, agent profiles, saved properties, and a property-submission flow.",
-    "Next.js, React, TypeScript and Tailwind CSS on the front end; MongoDB modeled and queried through Prisma.",
-    "Authentication with NextAuth/Auth.js, with forms and inputs validated by Zod schemas.",
-    "Property images uploaded and delivered through Cloudinary.",
-    "Resend sends transactional email for viewing requests and listing inquiries.",
+    "Property search, agent profiles, saved listings, and submissions.",
+    "Next.js, TypeScript, Prisma, and MongoDB, with Auth.js, Cloudinary, and Resend.",
   ],
   stack: [
     "Next.js",
@@ -66,27 +62,27 @@ export const featured = {
     {
       name: "Interface",
       tech: "Next.js · React · TypeScript · Tailwind CSS",
-      note: "Responsive pages for search, agent profiles, and saved properties.",
+      note: "Responsive search, agent profiles, and saved listings.",
     },
     {
       name: "Validation",
       tech: "Zod",
-      note: "Forms and inputs are checked against schemas before they reach the data layer.",
+      note: "Validates forms before data reaches the backend.",
     },
     {
       name: "Authentication",
       tech: "NextAuth/Auth.js",
-      note: "Secure sign-in for users who save properties and submit listings.",
+      note: "Sign-in for saved properties and listing submissions.",
     },
     {
       name: "Data",
       tech: "Prisma · MongoDB",
-      note: "Prisma models and queries the listing, agent and user data.",
+      note: "Stores listings, agent profiles, and user data.",
     },
     {
       name: "Services",
       tech: "Cloudinary · Resend",
-      note: "Cloudinary handles property images. Resend delivers viewing-request and inquiry emails.",
+      note: "Property images and inquiry emails.",
     },
   ],
 };
@@ -96,11 +92,10 @@ export const otherProjects = [
     name: "Drishop",
     kind: "Full-stack e-commerce storefront",
     description:
-      "A responsive Nigerian e-commerce storefront with department and category navigation, product discovery, promotional deals, and clear naira pricing. The storefront presents search, wishlist, account, cart, and delivery entry points.",
+      "A Nigerian e-commerce storefront for browsing products, deals, and everyday essentials.",
     highlights: [
-      "Browse a broad product catalog across phones, home, fashion, beauty, groceries, and other departments.",
-      "Discover popular finds, discounted products, and scheduled weekly deals.",
-      "Storefront interface includes product search, wishlist, account, cart, and delivery messaging.",
+      "Product categories, search, wishlist, account, and cart.",
+      "Promotions and weekly deals with naira pricing.",
     ],
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL"],
     url: "https://drishop.vercel.app",
@@ -114,7 +109,7 @@ export const otherProjects = [
     name: "Drovana",
     kind: "Mobile-first delivery marketplace",
     description:
-      "A mobile-first delivery marketplace for Ilorin, Kwara State, connecting customers with local delivery services for food, groceries, local finds, and parcels.",
+      "A mobile-first Ilorin delivery marketplace for food, groceries, and parcels.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS v4", "Supabase Auth", "PostgreSQL", "Zod", "Paystack"],
     url: "https://drovana-five.vercel.app/",
     repo: "https://github.com/hardeyemo/Drovana",
@@ -126,7 +121,7 @@ export const otherProjects = [
   {
     name: "Education Donation Platform",
     description:
-      "A donation website supporting access to quality education for children. Animation guides donors through the giving flow and builds trust at each step. Paystack handles payments end to end.",
+      "An education donation platform with a guided giving flow and Paystack payments.",
     stack: ["React", "Tailwind CSS", "Paystack"],
     url: "",
     repo: "",
@@ -169,22 +164,22 @@ export const experience: {
   {
     role: "Full-Stack Web Development",
     points: [
-      "Designed and built full-stack web applications end to end with React.js, Next.js, JavaScript/TypeScript and Tailwind CSS, taking each feature from planning through deployment.",
-      "Built and maintained backend services and REST APIs with Node.js and Express.js, structuring data models in MongoDB and Prisma for reliability and easy long-term maintenance.",
-      "Implemented authentication flows, third-party API integrations, and UI motion with Framer Motion and GSAP to improve usability without compromising load times.",
+      "Built and shipped full-stack apps with React, Next.js, TypeScript, and Tailwind CSS.",
+      "Developed REST APIs and data models with Node.js, Express, MongoDB, and Prisma.",
+      "Added authentication, third-party integrations, and interface motion.",
     ],
   },
   {
     role: "Frontend and Backend Web Development",
     points: [
-      "Built responsive, accessible interfaces with React.js, Next.js, Tailwind CSS and shadcn/ui, plus reusable component libraries that kept codebases maintainable as products grew.",
-      "Designed backend architecture and REST APIs with Node.js and Express.js, connecting frontends to MongoDB and external services for dependable data flow.",
+      "Created responsive interfaces and reusable components with React, Next.js, and Tailwind CSS.",
+      "Connected frontends to REST APIs, MongoDB, and external services.",
     ],
   },
 ];
 
 export const education = {
   school: "University of Ilorin",
-  degree: "B.Eng, Agricultural Engineering",
+  degree: "Bachelor of Engineering (B.Eng)",
   detail: "Second Class Upper Division",
 };

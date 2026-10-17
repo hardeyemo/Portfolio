@@ -1,3 +1,8 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { otherProjects } from "@/data/portfolio";
 import Image from "next/image";
 import { ArrowUpRight, GithubIcon } from "./Icons";
@@ -6,7 +11,7 @@ type Project = (typeof otherProjects)[number];
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <li className="group overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_14px_45px_rgba(0,0,0,0.12)] transition-colors hover:border-gold/50">
+    <li data-project-card className="group overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_14px_45px_rgba(0,0,0,0.12)] transition-colors hover:border-gold/50">
       {"screenshot" in project && project.screenshot && (
         <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-line bg-canvas">
           <Image
@@ -62,8 +67,36 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export function OtherProjects() {
+  const list = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const media = gsap.matchMedia();
+    media.add("(prefers-reduced-motion: no-preference)", () => {
+      const cards = list.current?.querySelectorAll("[data-project-card]");
+      if (!cards?.length) return;
+      gsap.fromTo(
+        cards,
+        { autoAlpha: 0, y: 24 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.65,
+          stagger: 0.12,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: list.current,
+            start: "top 82%",
+            once: true,
+          },
+        },
+      );
+    });
+    return () => media.revert();
+  }, []);
+
   return (
-    <ul className="space-y-6">
+    <ul ref={list} className="space-y-6">
       {otherProjects.map((project) => <ProjectCard key={project.name} project={project} />)}
     </ul>
   );

@@ -6,20 +6,20 @@ type Project = (typeof otherProjects)[number];
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <li className="overflow-hidden rounded-xl border border-line bg-surface transition-colors hover:border-gold/60">
+    <li className="group overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_14px_45px_rgba(0,0,0,0.12)] transition-colors hover:border-gold/50">
       {"screenshot" in project && project.screenshot && (
-        <div className="relative aspect-[16/9] w-full border-b border-line bg-canvas">
+        <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-line bg-canvas">
           <Image
             src={project.screenshot.src}
             alt={project.screenshot.alt}
             fill
             sizes="(max-width: 768px) 100vw, 900px"
             loading="lazy"
-            className="object-cover object-top"
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.025]"
           />
         </div>
       )}
-      <div className="p-6">
+      <div className="p-5 sm:p-7">
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
           <h3 className="text-lg font-semibold">{project.name}</h3>
           {"kind" in project && project.kind && (

@@ -47,19 +47,18 @@ export function Sidebar() {
         </ul>
       </nav>
 
-      <header className="pt-14 lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-between lg:py-24">
+      <header className="pt-10 pb-10 lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-between lg:py-20">
         <div>
-          <h1 className="rise text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-5xl xl:text-6xl" style={{ ["--i" as string]: 0 }}>
+          <h1 className="rise max-w-[12ch] font-display text-[2.65rem] font-medium leading-[1.06] tracking-[-0.04em] text-ink sm:text-[3.15rem] lg:text-[2.8rem] xl:text-[3.25rem]" style={{ ["--i" as string]: 0 }}>
             {profile.name}
           </h1>
-          <p className="rise mt-3 text-xl font-medium text-gold" style={{ ["--i" as string]: 1 }}>
+          <p className="rise mt-4 text-lg font-semibold tracking-wide text-gold" style={{ ["--i" as string]: 1 }}>
             {profile.title}
           </p>
-          <p className="rise mt-4 max-w-[34ch] leading-relaxed text-muted" style={{ ["--i" as string]: 2 }}>
+          <p className="rise mt-4 max-w-[34ch] text-[0.98rem] leading-7 text-muted" style={{ ["--i" as string]: 2 }}>
             {profile.tagline}
           </p>
-
-          <nav aria-label="Sections" className="mt-14 hidden lg:block">
+          <nav aria-label="Sections" className="mt-12 hidden lg:block">
             <ul className="space-y-1">
               {nav.map((n) => {
                 const on = active === n.id;

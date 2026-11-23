@@ -1,80 +1,110 @@
-import { otherProjects } from "@/data/portfolio";
-import { ArrowUpRight } from "./Icons";
+"use client";
 
-export function OtherProjects() {
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { otherProjects } from "@/data/portfolio";
+import Image from "next/image";
+import { ArrowUpRight, GithubIcon } from "./Icons";
+
+type Project = (typeof otherProjects)[number];
+
+function ProjectCard({ project }: { project: Project }) {
   return (
-    <ul className="space-y-6">
-      {otherProjects.map((p) => (
-        <li key={p.name} className="rounded-xl border border-line bg-surface p-6 transition-colors hover:border-gold/60">
-          {"image" in p && p.image && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={p.image} alt={`${p.name} website screenshot`} loading="lazy" className="mb-5 aspect-[16/9] w-full rounded-lg border border-line object-cover object-top" />
+    <li data-project-card className="group overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_14px_45px_rgba(0,0,0,0.12)] transition-colors hover:border-gold/50">
+      {"urlLabel" in project && project.urlLabel && project.url && (
+        <div className="flex justify-center px-5 pt-5 sm:px-7 sm:pt-6">
+          <a href={project.url} target="_blank" rel="noreferrer" className="inline-flex min-h-10 items-center gap-2 font-mono text-sm font-medium text-gold underline decoration-gold/35 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink">
+            {project.urlLabel} <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+        </div>
+      )}
+      {"screenshot" in project && project.screenshot && (
+        <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-line bg-canvas">
+          <Image
+            src={project.screenshot.src}
+            alt={project.screenshot.alt}
+            fill
+            sizes="(max-width: 768px) 100vw, 900px"
+            loading="lazy"
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.025]"
+          />
+        </div>
+      )}
+      <div className="p-5 sm:p-7">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <h3 className="text-lg font-semibold">{project.name}</h3>
+          {"kind" in project && project.kind && (
+            <p className="text-sm text-muted">{project.kind}</p>
           )}
-          {"gallery" in p && p.gallery && (
-            <div className="mb-6 overflow-hidden rounded-lg border border-line bg-canvas">
-              <div className="flex items-center gap-3 border-b border-line px-4 py-3">
-                <div className="flex gap-1.5" aria-hidden="true">
-                  <span className="h-2.5 w-2.5 rounded-full bg-line" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-line" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-line" />
-                </div>
-                <a href={p.url} target="_blank" rel="noreferrer" className="min-w-0 truncate rounded-md bg-surface px-3 py-1 font-mono text-xs text-muted hover:text-gold">
-                  drishop.vercel.app
-                </a>
-                <span className="ml-auto hidden font-mono text-[10px] uppercase tracking-wider text-muted sm:inline">Storefront catalogue</span>
-              </div>
-              <div className="grid grid-cols-2 gap-2 p-3 sm:grid-cols-4">
-                {p.gallery.map((item) => (
-                  <div key={item.src} className="overflow-hidden rounded-md border border-line bg-white">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={item.src} alt={item.alt} loading="lazy" className="aspect-square w-full object-contain p-2" />
-                  </div>
-                ))}
-              </div>
-              <p className="px-4 pb-3 text-xs text-muted">Product imagery from the project catalogue</p>
-            </div>
-          )}
-          {"urlLabel" in p && p.urlLabel && p.url && (
-            <a href={p.url} target="_blank" rel="noreferrer" className="mb-2 inline-block font-mono text-xs text-muted hover:text-gold">
-              {p.urlLabel}
-            </a>
-          )}
-          <h3 className="flex items-center gap-2 text-lg font-semibold">
-            {p.url ? (
-              <a href={p.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-gold">
-                {p.name} <ArrowUpRight />
-              </a>
-            ) : (
-              p.name
-            )}
-          </h3>
-          <p className="mt-3 max-w-[62ch] leading-relaxed text-muted">{p.description}</p>
-          {"highlights" in p && p.highlights && (
-            <ul className="mt-4 max-w-[70ch] space-y-2 text-sm leading-relaxed text-muted">
-              {p.highlights.map((highlight) => (
-                <li key={highlight} className="flex gap-3">
-                  <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rotate-45 bg-gold" />
-                  {highlight}
-                </li>
-              ))}
-            </ul>
-          )}
-          {"statusNote" in p && p.statusNote && (
-            <p className="mt-4 max-w-[70ch] border-l-2 border-gold/60 pl-3 text-sm leading-relaxed text-muted">{p.statusNote}</p>
-          )}
-          <ul className="mt-4 flex flex-wrap gap-2">
-            {p.stack.map((t) => (
-              <li key={t} className="rounded-full bg-gold/10 px-3 py-1 font-mono text-xs text-gold">
-                {t}
+        </div>
+        <p className="mt-3 max-w-[62ch] leading-relaxed text-muted">{project.description}</p>
+        {"highlights" in project && project.highlights && (
+          <ul className="mt-4 max-w-[70ch] space-y-2 text-sm leading-relaxed text-muted">
+            {project.highlights.map((highlight) => (
+              <li key={highlight} className="flex gap-3">
+                <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rotate-45 bg-gold" />
+                {highlight}
               </li>
             ))}
           </ul>
-          <div className="mt-4 flex flex-wrap gap-4">
-            {p.url && <a href={p.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm hover:text-gold">Live demo <ArrowUpRight className="h-3.5 w-3.5" /></a>}
-            {p.repo && <a href={p.repo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm hover:text-gold">View code <ArrowUpRight className="h-3.5 w-3.5" /></a>}
-          </div>
-        </li>
-      ))}
+        )}
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {project.stack.map((technology) => (
+            <li key={technology} className="rounded-full bg-gold/10 px-3 py-1 font-mono text-xs text-gold">
+              {technology}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
+          {project.url && (
+            <a href={project.url} target="_blank" rel="noreferrer" className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-gold/40 bg-gold/10 px-4 text-sm font-medium transition-colors hover:border-gold hover:bg-gold/20">
+              Live Demo <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          )}
+          {project.repo && (
+            <a href={project.repo} target="_blank" rel="noreferrer" className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-line px-4 text-sm font-medium transition-colors hover:border-gold/60 hover:text-gold">
+              <GithubIcon className="h-4 w-4" /> View Source
+            </a>
+          )}
+        </div>
+      </div>
+    </li>
+  );
+}
+
+export function OtherProjects() {
+  const list = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const media = gsap.matchMedia();
+    media.add("(prefers-reduced-motion: no-preference)", () => {
+      const cards = list.current?.querySelectorAll("[data-project-card]");
+      if (!cards?.length) return;
+      gsap.fromTo(
+        cards,
+        { autoAlpha: 0, y: 24 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.65,
+          stagger: 0.12,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: list.current,
+            start: "top 82%",
+            once: true,
+          },
+        },
+      );
+    });
+    return () => media.revert();
+  }, []);
+
+  return (
+    <ul ref={list} className="space-y-6">
+      {otherProjects.map((project) => <ProjectCard key={project.name} project={project} />)}
     </ul>
   );
 }

@@ -40,15 +40,15 @@ export function ContactForm() {
 
   return (
     <div className="max-w-[560px]">
-      <p className="mb-8 leading-relaxed text-muted">
-        Have a project or a role in mind? Send a message, or email{" "}
+      <p className="mb-4 leading-relaxed text-muted">
+        Get in touch: {" "}
         <a href={`mailto:${profile.email}`} className="text-ink underline decoration-gold underline-offset-4 hover:text-gold">
           {profile.email}
         </a>
         .
       </p>
 
-      <form onSubmit={onSubmit} className="space-y-5" noValidate>
+      <form onSubmit={onSubmit} className="space-y-1" noValidate>
         <div>
           <label htmlFor="name" className="text-sm font-medium">Name</label>
           <input id="name" name="name" required minLength={2} maxLength={80} autoComplete="name" className={field} />

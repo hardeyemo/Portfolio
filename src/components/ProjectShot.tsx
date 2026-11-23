@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 // Shows a screenshot from /public. If the file isn't there yet, shows a clear placeholder instead of a broken image.
 export function ProjectShot({ src, alt }: { src: string; alt: string }) {
@@ -15,14 +16,17 @@ export function ProjectShot({ src, alt }: { src: string; alt: string }) {
     );
   }
 
-  // eslint-disable-next-line @next/next/no-img-element
   return (
-    <img
-      src={src}
-      alt={alt}
-      loading="lazy"
-      onError={() => setFailed(true)}
-      className="aspect-[16/10] w-full object-cover object-top"
-    />
+      <div className="relative aspect-[16/9] w-full bg-surface">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(max-width: 768px) 100vw, 800px"
+        loading="lazy"
+        onError={() => setFailed(true)}
+        className="object-cover object-top"
+      />
+    </div>
   );
 }

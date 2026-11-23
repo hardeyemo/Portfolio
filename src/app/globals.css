@@ -3,21 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --canvas: #0c1310;
-  --surface: #131c18;
-  --line: #233029;
-  --ink: #e8eee9;
-  --muted: #8fa097;
-  --gold: #e2b45c;
+  --canvas: #0b100e;
+  --surface: #111916;
+  --line: #25332c;
+  --ink: #edf1ee;
+  --muted: #9aa9a0;
+  --gold: #dfb665;
 }
 
 html {
   scroll-behavior: smooth;
   background: var(--canvas);
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: var(--canvas);
+  background: radial-gradient(ellipse at 8% 2%, rgba(223, 182, 101, 0.055), transparent 34rem), var(--canvas);
   color: var(--ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,7 +26,7 @@ body {
 }
 
 ::selection {
-  background: rgba(226, 180, 92, 0.3);
+  background: rgba(223, 182, 101, 0.3);
   color: var(--ink);
 }
 
@@ -48,4 +49,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .rise { animation: none; }
+}
+
+@media (max-width: 1023px) {
+  html { scroll-padding-top: 4.25rem; }
 }

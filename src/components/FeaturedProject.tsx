@@ -1,119 +1,61 @@
-"use client";
-
-import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { featured } from "@/data/portfolio";
-import { ProjectShot } from "./ProjectShot";
 import { ArrowUpRight, GithubIcon } from "./Icons";
+import { ProjectShot } from "./ProjectShot";
 
 export function FeaturedProject() {
-  const [index, setIndex] = useState(0);
-  const reduce = useReducedMotion();
-  const shot = featured.shots[index];
-
   return (
-    <article>
-      <div className="mb-6">
-        <h3 className="text-xl font-semibold">{featured.name}</h3>
-        <p className="mt-1 text-sm text-muted">{featured.kind}</p>
+    <article className="group overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_18px_55px_rgba(0,0,0,0.16)] transition-colors hover:border-gold/50">
+      <div className="flex justify-center px-5 pt-5 sm:px-7 sm:pt-6">
+        <a href={featured.url} target="_blank" rel="noreferrer" className="inline-flex min-h-10 items-center gap-2 font-mono text-sm font-medium text-gold underline decoration-gold/35 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink">
+          {featured.urlLabel} <ArrowUpRight className="h-3.5 w-3.5" />
+        </a>
       </div>
+      <ProjectShot src={featured.screenshot.src} alt={featured.screenshot.alt} />
 
-      {/* Browser frame */}
-      <div className="overflow-hidden rounded-xl border border-line bg-surface shadow-[0_30px_80px_-40px_rgba(0,0,0,0.8)]">
-        <div className="flex items-center gap-3 border-b border-line px-4 py-3">
-          <div className="flex gap-1.5" aria-hidden="true">
-            <span className="h-2.5 w-2.5 rounded-full bg-line" />
-            <span className="h-2.5 w-2.5 rounded-full bg-line" />
-            <span className="h-2.5 w-2.5 rounded-full bg-line" />
-          </div>
+      <div className="p-5 sm:p-7">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <h3 className="text-lg font-semibold">{featured.name}</h3>
+          <p className="text-sm text-muted">{featured.kind}</p>
+        </div>
+
+        <p className="mt-3 max-w-[62ch] leading-relaxed text-muted">{featured.summary}</p>
+
+        <ul className="mt-4 max-w-[70ch] space-y-2 text-sm leading-relaxed text-muted">
+          {featured.highlights.map((highlight) => (
+            <li key={highlight} className="flex gap-3">
+              <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rotate-45 bg-gold" />
+              {highlight}
+            </li>
+          ))}
+        </ul>
+
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {featured.stack.map((technology) => (
+            <li key={technology} className="rounded-full bg-gold/10 px-3 py-1 font-mono text-xs text-gold">
+              {technology}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-5 flex flex-wrap gap-x-3 gap-y-2">
           <a
             href={featured.url}
             target="_blank"
             rel="noreferrer"
-            className="min-w-0 flex-1 truncate rounded-md bg-canvas px-3 py-1 font-mono text-xs text-muted transition-colors hover:text-gold"
+            className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-gold/40 bg-gold/10 px-4 text-sm font-medium transition-colors hover:border-gold hover:bg-gold/20"
           >
-            {featured.urlLabel}
+            View Website <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
-        </div>
-
-        <div role="tabpanel" id="shot-panel" aria-labelledby={`shot-tab-${index}`} className="relative">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={shot.src}
-              initial={reduce ? false : { opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
-              transition={{ duration: 0.22 }}
-            >
-              <ProjectShot src={shot.src} alt={shot.alt} />
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
-
-      <div role="tablist" aria-label="Screenshots" className="mt-4 flex flex-wrap gap-2">
-        {featured.shots.map((s, i) => (
-          <button
-            key={s.src}
-            role="tab"
-            id={`shot-tab-${i}`}
-            aria-selected={i === index}
-            aria-controls="shot-panel"
-            onClick={() => setIndex(i)}
-            className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
-              i === index
-                ? "border-gold bg-gold/10 text-gold"
-                : "border-line text-muted hover:border-muted hover:text-ink"
-            }`}
-          >
-            {s.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="mt-10 grid gap-10 md:grid-cols-[1.2fr_1fr]">
-        <div>
-          <p className="max-w-[60ch] text-[1.0625rem] leading-relaxed">{featured.summary}</p>
-          <ul className="mt-5 max-w-[60ch] space-y-3 text-muted">
-            {featured.highlights.map((h) => (
-              <li key={h} className="flex gap-3 leading-relaxed">
-                <span aria-hidden="true" className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rotate-45 bg-gold" />
-                {h}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="text-sm font-semibold">Built with</h4>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {featured.stack.map((t) => (
-              <li key={t} className="rounded-full bg-gold/10 px-3 py-1 font-mono text-xs text-gold">
-                {t}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8 flex flex-wrap gap-3">
+          {featured.repo && (
             <a
-              href={featured.url}
+              href={featured.repo}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-canvas transition-opacity hover:opacity-90"
+              className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-line px-4 text-sm font-medium transition-colors hover:border-gold/60 hover:text-gold"
             >
-              Visit live site <ArrowUpRight />
+              <GithubIcon className="h-4 w-4" /> View Source
             </a>
-            {featured.repo && (
-              <a
-                href={featured.repo}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium transition-colors hover:border-gold hover:text-gold"
-              >
-                <GithubIcon className="h-4 w-4" /> View code
-              </a>
-            )}
-          </div>
+          )}
         </div>
       </div>
     </article>

@@ -28,9 +28,9 @@ export default function Home() {
         Skip to content
       </a>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="mx-auto max-w-[1180px] px-6 sm:px-10 lg:grid lg:grid-cols-[minmax(300px,380px)_1fr] lg:gap-20">
+      <div className="mx-auto max-w-[1280px] px-5 sm:px-8 lg:grid lg:grid-cols-[minmax(290px,350px)_minmax(0,1fr)] lg:gap-16 xl:gap-24">
         <Sidebar />
-        <main className="pb-24 pt-6 lg:pt-24">
+        <main className="min-w-0 pb-20 pt-8 lg:pt-20">
           <Section id="about" title="About">
             <div className="max-w-[62ch] space-y-4 text-[1.0625rem] leading-relaxed text-muted">
               {profile.about.map((p) => (

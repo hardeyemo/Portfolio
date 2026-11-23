@@ -31,6 +31,15 @@ function ProjectCard({ project }: { project: Project }) {
           />
         </div>
       )}
+      {"gallery" in project && project.gallery && (
+        <div className="grid grid-cols-2 gap-2 border-b border-line bg-canvas p-3 sm:grid-cols-4">
+          {project.gallery.map((item) => (
+            <div key={item.src} className="relative aspect-square overflow-hidden rounded-md border border-line bg-white">
+              <Image src={item.src} alt={item.alt} fill sizes="(max-width: 640px) 45vw, 220px" className="object-contain p-2" />
+            </div>
+          ))}
+        </div>
+      )}
       <div className="p-5 sm:p-7">
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
           <h3 className="text-lg font-semibold">{project.name}</h3>

@@ -104,12 +104,22 @@ export const otherProjects = [
       src: "/projects/drishop/storefront.png",
       alt: "Drishop storefront showing product discovery, weekly deals, and product cards",
     },
+    gallery: [
+      { src: "/projects/drishop/laptop.webp", alt: "Laptop product from the Drishop catalogue" },
+      { src: "/projects/drishop/kettle.webp", alt: "Electric kettle product from the Drishop catalogue" },
+      { src: "/projects/drishop/serum.webp", alt: "Vitamin C serum product from the Drishop catalogue" },
+      { src: "/projects/drishop/rice.webp", alt: "Rice product from the Drishop catalogue" },
+    ],
   },
   {
     name: "Bitly URL Shortener",
     description:
       "A live URL shortener project for turning long links into short links, with an option to create QR codes.",
     stack: [],
+    screenshot: {
+      src: "/projects/shorturl-home.png",
+      alt: "Bitly URL shortener project screenshot",
+    },
     url: "https://bitly.com/",
     urlLabel: "bitly.com",
     repo: "https://github.com/hardeyemo/Shorturl..git",
@@ -131,6 +141,10 @@ export const otherProjects = [
     description:
       "A real estate website for browsing property listings, saving bookmarks, and searching for homes to rent or buy.",
     stack: ["TypeScript", "Next.js"],
+    screenshot: {
+      src: "/projects/real-est-home.png",
+      alt: "Real Est property listings website screenshot",
+    },
     url: "https://real-est-azure.vercel.app/",
     repo: "https://github.com/hardeyemo/Real_Est",
   },

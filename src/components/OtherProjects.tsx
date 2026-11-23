@@ -34,6 +34,11 @@ export function OtherProjects() {
               <p className="px-4 pb-3 text-xs text-muted">Product imagery from the project catalogue</p>
             </div>
           )}
+          {"urlLabel" in p && p.urlLabel && p.url && (
+            <a href={p.url} target="_blank" rel="noreferrer" className="mb-2 inline-block font-mono text-xs text-muted hover:text-gold">
+              {p.urlLabel}
+            </a>
+          )}
           <h3 className="flex items-center gap-2 text-lg font-semibold">
             {p.url ? (
               <a href={p.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-gold">

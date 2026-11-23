@@ -28,7 +28,7 @@ export const nav = [
 ];
 
 export const featured = {
-  name: "RA Homes & Properties",
+  name: "Rahomes and properties",
   kind: "Real estate platform",
   url: "https://www.rahomesproperties.com",
   urlLabel: "www.rahomesproperties.com",
@@ -58,7 +58,7 @@ export const featured = {
     "Resend",
   ],
   shots: [
-    { label: "Home", src: "/projects/ra-homes/home.png", alt: "RA Homes & Properties home page" },
+    { label: "Home", src: "/projects/ra-homes/home.png", alt: "Rahomes and properties home page" },
   ],
   layers: [
     {
@@ -114,13 +114,23 @@ export const otherProjects = [
     repo: "https://github.com/hardeyemo/Drishop",
   },
   {
-    name: "Shorturl",
+    name: "Bitly URL Shortener",
     description:
-      "A URL shortener interface for turning long links into short links, with an option to create QR codes.",
+      "A live URL shortener project at bitly.com for turning long links into short links, with an option to create QR codes.",
     stack: [],
     image: "/projects/shorturl-home.png",
     url: "https://bitly.com/",
+    urlLabel: "bitly.com",
     repo: "https://github.com/hardeyemo/Shorturl..git",
+  },
+  {
+    name: "FeeCare Medical Centre",
+    description:
+      "A healthcare website for FeeCare Medical Centre, featuring appointment booking, service and facility information, and a patient-focused experience. Paystack checkout is integrated through Next.js API routes.",
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Motion", "Lucide React", "Paystack"],
+    image: "/projects/feecare/home.jpg",
+    url: "https://feecaremed.vercel.app/",
+    repo: "https://github.com/hardeyemo/FeeCare-Med.git",
   },
   {
     name: "Real Est",

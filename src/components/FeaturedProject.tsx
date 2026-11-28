@@ -4,7 +4,7 @@ import { ProjectShot } from "./ProjectShot";
 
 export function FeaturedProject() {
   return (
-    <article className="group overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_18px_55px_rgba(0,0,0,0.16)] transition-colors hover:border-gold/50">
+    <article className="group overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_18px_55px_rgba(0,0,0,0.16)] transition-[border-color,transform,box-shadow] duration-500 hover:-translate-y-1 hover:border-gold/50 hover:shadow-[0_24px_65px_rgba(0,0,0,0.24)] motion-reduce:transform-none">
       <div className="flex justify-center px-5 pt-5 sm:px-7 sm:pt-6">
         <a href={featured.url} target="_blank" rel="noreferrer" className="inline-flex min-h-10 items-center gap-2 font-mono text-sm font-medium text-gold underline decoration-gold/35 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink">
           {featured.urlLabel} <ArrowUpRight className="h-3.5 w-3.5" />

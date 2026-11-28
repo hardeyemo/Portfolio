@@ -9,7 +9,7 @@ export function Stack() {
           <dd>
             <ul className="flex flex-wrap gap-2">
               {g.items.map((i) => (
-                <li key={i} className="rounded-md border border-line px-2.5 py-1 font-mono text-xs text-muted">
+                <li key={i} className="rounded-md border border-line px-2.5 py-1 font-mono text-xs text-muted transition-[transform,border-color,color,background-color] duration-200 hover:-translate-y-0.5 hover:border-gold/50 hover:bg-gold/5 hover:text-gold motion-reduce:transform-none">
                   {i}
                 </li>
               ))}

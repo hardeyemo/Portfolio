@@ -11,7 +11,7 @@ type Project = (typeof otherProjects)[number];
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <li data-project-card className="group overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_14px_45px_rgba(0,0,0,0.12)] transition-colors hover:border-gold/50">
+    <li data-project-card className="group overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_14px_45px_rgba(0,0,0,0.12)] transition-[border-color,transform,box-shadow] duration-500 hover:-translate-y-1 hover:border-gold/50 hover:shadow-[0_22px_55px_rgba(0,0,0,0.22)] motion-reduce:transform-none">
       {"urlLabel" in project && project.urlLabel && project.url && (
         <div className="flex justify-center px-5 pt-5 sm:px-7 sm:pt-6">
           <a href={project.url} target="_blank" rel="noreferrer" className="inline-flex min-h-10 items-center gap-2 font-mono text-sm font-medium text-gold underline decoration-gold/35 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink">
